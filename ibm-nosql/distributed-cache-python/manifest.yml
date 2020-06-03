@@ -1,0 +1,14 @@
+applications:
+ - name: distributed-cache
+   random-route: true
+   memory: 256M
+   instances: 4
+   command: python app.py
+   env:
+     USER_KEY_PREFIX: /HardekKrzysztof2/
+ - name: locust
+   random-route: true
+   memory: 256M
+   docker:
+     image: rafalbigaj/python_flask_locust:latest
+   command: locust --web-host 0.0.0.0 --port $PORT
